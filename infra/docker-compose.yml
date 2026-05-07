@@ -1,0 +1,28 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: elysia_db
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: my_database
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: elysia_pgadmin
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80" # UI will be at http://localhost:5050
+    depends_on:
+      - postgres
+
+volumes:
+  pgdata:
