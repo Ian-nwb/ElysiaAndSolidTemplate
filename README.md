@@ -140,7 +140,3 @@ Key conventions:
 | **Simplicity** | Minimal abstraction — both Elysia and SolidJS have small, focused APIs |
 
 ---
-
-## License
-
-MIT
